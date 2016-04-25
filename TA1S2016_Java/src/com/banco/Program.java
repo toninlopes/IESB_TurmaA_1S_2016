@@ -12,23 +12,38 @@ package com.banco;
 public class Program {
 
     /**
-     * @param args the command line arguments
+     * @param args 
      */
     public static void main(String[] args) {
+
+        Gerente gerente = new Gerente();
         
-        Conta contaDoCiclano = new Conta();       
-        contaDoCiclano.setNome("Ciclano de Tal");
-        contaDoCiclano.deposita(250);
-        contaDoCiclano.deposita(250);
+        
+        
+        
+        
+        gerente.setSalario(5000.0);
 
-        Conta contaDoFulano = new Conta();
-        contaDoFulano.setNome("Fulano de Tal");
-        contaDoFulano.deposita(1000);
 
-        contaDoFulano.transfere(contaDoCiclano, 500);
 
-        System.out.println(String.format("Saldo do %1s: %2f", contaDoCiclano.getNome(), contaDoCiclano.getSaldo()));
-        System.out.println(String.format("Saldo do %1s: %2f", contaDoFulano.getNome(), contaDoFulano.getSaldo()));
+
+
+
+        
+        imprime(gerente);
+
+        Funcionario funcionario = new Funcionario();
+        funcionario.setNome("Ciclano de Tal");
+        funcionario.setSalario(5000.0);
+        
+        imprime(funcionario);
     }
     
+    static void imprime(Funcionario funcionario) {
+        System.out.println(String.format("%s - Bonificação de %s é %s", funcionario.getClass(),
+                funcionario.getNome(), funcionario.getBonificacao()));
+    }
+    
+    //class com.banco.Gerente - Bonificação de Fulano de Tal é 750.0
+    //class com.banco.Funcionario - Bonificação de Ciclano de Tal é 500.0
 }
