@@ -10,19 +10,34 @@ namespace TA1S2016_CSharp
     {
         static void Main(string[] args)
         {
-            Conta contaDoCiclano = new Conta();
-            contaDoCiclano.Nome = "Ciclano de Tal";
-            contaDoCiclano.Deposita(250);
-            contaDoCiclano.Deposita(250);
+            //Conta contaDoCiclano =
+            //    new Conta("Ciclano de Tal", 500, 1000);
 
-            Conta contaDoFulano = new Conta();
-            contaDoFulano.Nome = "Fulano de Tal";
-            contaDoFulano.Deposita(1000);
+            //Console.WriteLine(
+            //    $"Saldo de {contaDoCiclano.Nome} é {contaDoCiclano.Saldo}");
 
-            contaDoFulano.Transfere(contaDoCiclano, 500);
+            //contaDoCiclano.Deposita(250);
+            //contaDoCiclano.Deposita(250);
 
-            Console.WriteLine($"Saldo do {contaDoCiclano.Nome}: {contaDoCiclano.Saldo}");
-            Console.WriteLine($"Saldo do {contaDoFulano.Nome}: {contaDoFulano.Saldo}");
+            //Conta contaDoFulano = new Conta();
+            //contaDoFulano.Nome = "Fulano de Tal";
+            //contaDoFulano.Deposita(1000);
+
+            //contaDoFulano.Transfere(contaDoCiclano, 500);
+
+            //Console.WriteLine($"Saldo do {contaDoCiclano.Nome}: {contaDoCiclano.Saldo}");
+            //Console.WriteLine($"Saldo do {contaDoFulano.Nome}: {contaDoFulano.Saldo}");
+
+
+            Funcionario func = new Funcionario();
+            func.Salario = 5000;
+            Console.WriteLine($"Funcionário {func.Bonificacao}");
+
+            Gerente ger = new Gerente();
+            ger.Salario = 5000;
+            Console.WriteLine($"Gerente {ger.Bonificacao}");
+
+            Console.ReadLine();
         }
     }
 }

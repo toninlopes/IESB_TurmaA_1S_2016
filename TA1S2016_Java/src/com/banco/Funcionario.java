@@ -12,11 +12,21 @@ import java.util.Date;
  * @author Antonio Lopes
  */
 public class Funcionario {
+   
     protected String nome;
     private String sobrenome;
     protected String cpf;
     protected Date dataNascimento;
-    protected Double salario;    
+    protected Double salario;
+
+    public Funcionario(String nome, Double salario) {
+        this.nome = nome;
+        this.salario = salario;
+    }
+    
+    public Double getBonificacao() {
+        return this.salario * 0.10;
+    }
     
     public String getNome() {
         return nome;
@@ -25,7 +35,7 @@ public class Funcionario {
         this.nome = nome;
     }
     public void setNome(String nome, String sobrenome) {
-        this.nome = nome;
+        this.setNome(nome);
         this.sobrenome = sobrenome;
     }
     
@@ -56,8 +66,4 @@ public class Funcionario {
     public void setSalario(Double salario) {
         this.salario = salario;
     }
-    
-    public double getBonificacao() {
-        return this.salario * 0.10;
-    }    
 }

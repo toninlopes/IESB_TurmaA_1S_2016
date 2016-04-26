@@ -43,17 +43,29 @@ namespace TA1S2016_CSharp
 
         public Conta()
         {
-            this.limite = 100;
+            this.numero = "";
+            this.nome = "";
+            this.dataAbertura = DateTime.Now;
+            this.saldo = 0;
+            this.limite = 0;
         }
-        public Conta(string nome)
+
+        public Conta(double limite)
             : this()
         {
-            this.nome = nome;
+            this.limite = limite;
         }
-        public Conta(string numero, string nome)
-            : this(nome)
+
+        public Conta(double limite, double saldo)
+            : this(limite)
         {
-            this.numero = numero;
+            this.saldo = saldo;
+        }
+
+        public Conta(string nome, double limite, double saldo)
+            : this(limite, saldo)
+        {
+            this.nome = nome;
         }
 
         public bool Saca(double valor)

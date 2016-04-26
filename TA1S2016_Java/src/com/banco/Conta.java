@@ -19,6 +19,29 @@ public class Conta {
     private double limite;
     private double saldo;
 
+    Conta() {
+        this.numero = "";
+        this.nome = "";
+        this.dataAbertura = new Date();
+        this.limite = 0.0;
+        this.saldo = 0.0;
+    }
+    
+    Conta(double limite) {
+        this();
+        this.limite = limite;
+    }
+    
+    Conta(double limite, double saldo) {
+        this(limite);
+        this.saldo = saldo;
+    }
+    
+    Conta(String nome, double limite, double saldo) {
+        this(limite, saldo);
+        this.nome = nome;
+    }
+    
     public String getNumero() {
         return this.numero;
     }

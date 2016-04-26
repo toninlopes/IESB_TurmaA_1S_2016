@@ -5,38 +5,31 @@
  */
 package com.banco;
 
+import java.util.Date;
+
 /**
  *
  * @author Antonio Lopes
  */
 public class Gerente extends Funcionario {
-    private String senha;
+    
     private int numeroDeSubordinados;
-
-    @Override
-    public double getBonificacao() {
-        return this.salario * 0.15;
-    } 
-    
-    public boolean autentica(String senha) {
-        if (this.getSenha().equals(senha)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
-    public String getSenha() {
-        return senha;
-    }
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 
     public int getNumeroDeSubordinados() {
         return numeroDeSubordinados;
     }
+
     public void setNumeroDeSubordinados(int numeroDeSubordinados) {
         this.numeroDeSubordinados = numeroDeSubordinados;
     }
+
+    public Gerente(int numeroDeSubordinados, String nome, Double salario) {
+        super(nome, salario);
+        this.numeroDeSubordinados = numeroDeSubordinados;
+    }
+    
+    @Override
+    public Double getBonificacao() {
+        return this.getSalario() * 0.15;
+    }    
 }
