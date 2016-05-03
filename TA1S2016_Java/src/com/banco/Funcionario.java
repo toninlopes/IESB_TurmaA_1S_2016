@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author Antonio Lopes
  */
-public class Funcionario {
+public abstract class Funcionario {
    
     protected String nome;
     private String sobrenome;
@@ -19,14 +19,14 @@ public class Funcionario {
     protected Date dataNascimento;
     protected Double salario;
 
+    public Funcionario() {}
+    
     public Funcionario(String nome, Double salario) {
         this.nome = nome;
         this.salario = salario;
     }
     
-    public Double getBonificacao() {
-        return this.salario * 0.10;
-    }
+    public abstract Double getBonificacao();
     
     public String getNome() {
         return nome;

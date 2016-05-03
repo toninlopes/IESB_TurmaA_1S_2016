@@ -34,9 +34,9 @@ public class Program {
 //        System.out.println(String.format("Saldo do %1s: %2f", contaDoFulano.getNome(), contaDoFulano.getSaldo()));
         
         
-        Funcionario funcionario = new Funcionario("Funcionário", 5000.0);
+        //Funcionario funcionario = new Funcionario("Funcionário", 5000.0);
         //funcionario.setN
-        System.out.println("Bonif. do Funcionário: " + funcionario.getBonificacao());
+        //System.out.println("Bonif. do Funcionário: " + funcionario.getBonificacao());
         
         Gerente gerente = new Gerente(1, "Gerente", 5000.0);
         System.out.println("Bonif. do Gerente: " + gerente.getBonificacao());

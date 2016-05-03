@@ -29,9 +29,9 @@ namespace TA1S2016_CSharp
             //Console.WriteLine($"Saldo do {contaDoFulano.Nome}: {contaDoFulano.Saldo}");
 
 
-            Funcionario func = new Funcionario();
-            func.Salario = 5000;
-            Console.WriteLine($"Funcionário {func.Bonificacao}");
+            //Funcionario func = new Funcionario();
+            //func.Salario = 5000;
+            //Console.WriteLine($"Funcionário {func.Bonificacao}");
 
             Gerente ger = new Gerente();
             ger.Salario = 5000;

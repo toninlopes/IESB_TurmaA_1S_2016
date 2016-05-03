@@ -2,7 +2,7 @@
 
 namespace TA1S2016_CSharp
 {
-    public class Funcionario
+    public abstract class Funcionario
     {
         string nome;
         string sobrenome;
@@ -10,10 +10,7 @@ namespace TA1S2016_CSharp
         DateTime  dataNascimento;
         double salario;
 
-        public virtual double Bonificacao
-        {
-            get { return this.salario * 0.10; }
-        }
+        public abstract double Bonificacao { get; }
 
         public string Nome
         {

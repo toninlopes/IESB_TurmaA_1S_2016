@@ -5,15 +5,14 @@
  */
 package com.banco;
 
-import java.util.Date;
-
 /**
  *
  * @author Antonio Lopes
  */
-public class Gerente extends Funcionario {
+public class Gerente extends Funcionario implements Autenticavel {
     
     private int numeroDeSubordinados;
+    private String senha;
 
     public int getNumeroDeSubordinados() {
         return numeroDeSubordinados;
@@ -31,5 +30,20 @@ public class Gerente extends Funcionario {
     @Override
     public Double getBonificacao() {
         return this.getSalario() * 0.15;
-    }    
+    }
+
+    @Override
+    public String getSenha() {
+        return this.senha;
+    }
+
+    @Override
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+    
+    @Override
+    public boolean autentica(String senha) {
+        return this.getSenha().equals(senha);
+    }
 }

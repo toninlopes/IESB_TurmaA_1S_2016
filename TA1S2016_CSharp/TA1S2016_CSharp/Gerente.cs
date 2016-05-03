@@ -2,7 +2,7 @@
 
 namespace TA1S2016_CSharp
 {
-    public class Gerente : Funcionario
+    public class Gerente : Funcionario, IAutenticavel
     {
         private int numeroDeSubordinados;
 
@@ -15,6 +15,13 @@ namespace TA1S2016_CSharp
         public override double Bonificacao
         {
             get { return this.Salario * 0.15; }
+        }
+
+        public string Senha { get; set; }
+
+        public bool Autentica(string senha)
+        {
+            return this.Senha.Equals(senha);
         }
     }
 }
