@@ -48,6 +48,8 @@
     <Compile Include="Coordenador.cs" />
     <Compile Include="Diretor.cs" />
     <Compile Include="Estagiario.cs" />
+    <Compile Include="Excecoes\SaldoInsuficienteException.cs" />
+    <Compile Include="Excecoes\ValorInvalidoException.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="Gerente.cs" />
     <Compile Include="IAutenticavel.cs" />

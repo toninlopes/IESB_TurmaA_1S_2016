@@ -5,6 +5,8 @@
  */
 package com.banco;
 
+import com.banco.excecoes.SaldoInsuficienteException;
+import com.banco.excecoes.ValorInvalidoException;
 import java.util.Date;
 
 /**
@@ -74,14 +76,18 @@ public class Conta {
         return this.saldo + this.limite;
     }
 
-    boolean saca(double valor) {
-
+    void saca(double valor) throws
+            SaldoInsuficienteException, ValorInvalidoException {
+        
+        if (valor == 0.0 || valor < 0.0)
+            throw new ValorInvalidoException("Valor deve ser maior que 0!");
+        
         if (valor > (this.saldo + this.limite)) {
-            return false;
+            throw new SaldoInsuficienteException("Saldo insuficiente!");
         } else {
             double novoSaldo = this.saldo - valor;
             this.saldo = novoSaldo;
-            return true;
+            
         }
     }
 
@@ -91,7 +97,12 @@ public class Conta {
     }
 
     void transfere(Conta destino, double valor) {
-        destino.saldo = destino.saldo + valor;
-        this.saldo = this.saldo - valor;
+        
+        try {
+          this.saca(valor);
+          destino.deposita(valor);
+        } catch (SaldoInsuficienteException | ValorInvalidoException e) {
+            System.out.println(e.getMessage());
+        }
     }
 }

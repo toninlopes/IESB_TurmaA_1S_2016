@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.banco;
+package com.banco.excecoes;
 
 /**
  *
  * @author antonio.lopes
  */
-public interface Autenticavel {   
-    
-    String getSenha();
-    
-    void setSenha(String senha);
-    
-    boolean autentica(String senha);
+public class ValorInvalidoException extends Exception {
+
+    public ValorInvalidoException(String message) {
+        super(message);
+    }
 }

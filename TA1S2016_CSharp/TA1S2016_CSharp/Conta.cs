@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TA1S2016_CSharp.Excecoes;
 
 namespace TA1S2016_CSharp
 {
@@ -68,17 +69,17 @@ namespace TA1S2016_CSharp
             this.nome = nome;
         }
 
-        public bool Saca(double valor)
+        public void Saca(double valor)
         {
             if (valor > (this.saldo + this.limite))
             {
-                return false;
+                throw new
+                    SaldoInsuficienteException("Saldo Insuficiente!");
             }
             else
             {
                 double novoSaldo = this.saldo - valor;
                 this.saldo = novoSaldo;
-                return true;
             }
         }
 
