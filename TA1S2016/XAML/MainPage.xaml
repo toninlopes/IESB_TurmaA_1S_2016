@@ -1,0 +1,37 @@
+﻿<Page
+    x:Class="XAML.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:XAML"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBox Grid.Row="0"
+                 Header="Meu TextBox"
+                 Margin="4"/>
+
+        <ComboBox Grid.Row="1"
+                  Header="Meu ComboBox"
+                  Margin="4"
+                  HorizontalAlignment="Stretch">
+            <TextBlock Text="1ª Opção"/>
+            <TextBlock Text="2ª Opção"/>
+            <TextBlock Text="3ª Opção"/>
+            <TextBlock Text="4ª Opção"/>
+        </ComboBox>
+
+        <Button Grid.Row="2"
+                Content="Meu Button"
+                Margin="4"
+                HorizontalAlignment="Stretch"/>
+    </Grid>
+</Page>
