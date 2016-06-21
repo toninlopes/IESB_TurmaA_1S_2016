@@ -40,19 +40,22 @@
                 Content="Canvas"
                 Grid.Row="2"
                 Grid.ColumnSpan="3"
-                Margin="4"/>
+                Margin="4"
+                Tapped="Button_Tapped_2"/>
 
         <Button HorizontalAlignment="Stretch"
-                Content="ListView"
+                Content="RelativePanel"
                 Grid.Row="3"
                 Grid.ColumnSpan="3"
-                Margin="4"/>
+                Margin="4"
+                Tapped="Button_Tapped_3"/>
 
         <Button HorizontalAlignment="Stretch"
                 Content="Pivot"
                 Grid.Row="4"
                 Grid.ColumnSpan="3"
-                Margin="4"/>
+                Margin="4"
+                Tapped="Button_Tapped_4"/>
         
     </Grid>
 </Page>

@@ -36,5 +36,20 @@ namespace Layouts
         {
             this.Frame.Navigate(typeof(LayoutStackPanel));
         }
+
+        private void Button_Tapped_2(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LayoutCanvas));
+        }
+
+        private void Button_Tapped_3(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LayoutRelativePanel));
+        }
+
+        private void Button_Tapped_4(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(LayoutPivot));
+        }
     }
 }

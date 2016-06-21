@@ -98,8 +98,17 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LayoutCanvas.xaml.cs">
+      <DependentUpon>LayoutCanvas.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LayoutGrid.xaml.cs">
       <DependentUpon>LayoutGrid.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutPivot.xaml.cs">
+      <DependentUpon>LayoutPivot.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LayoutRelativePanel.xaml.cs">
+      <DependentUpon>LayoutRelativePanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="LayoutStackPanel.xaml.cs">
       <DependentUpon>LayoutStackPanel.xaml</DependentUpon>
@@ -130,7 +139,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="LayoutCanvas.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LayoutGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LayoutPivot.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LayoutRelativePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
