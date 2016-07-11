@@ -13,6 +13,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Button Content="Simples"
@@ -24,6 +25,11 @@
                 HorizontalAlignment="Stretch"
                 Margin="12"
                 Tapped="Button_Tapped_1"/>
+
+        <Button Grid.Row="2" Content="Lista"
+                HorizontalAlignment="Stretch"
+                Margin="12"
+                Tapped="Button_Tapped_2"/>
 
     </Grid>
 </Page>

@@ -1,12 +1,19 @@
-﻿using System;
+﻿using DataBinding.Model;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
+using Windows.Storage.Streams;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -95,6 +102,27 @@ namespace DataBinding
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+
+        public static ObservableCollection<Funcionario> LoadData()
+        {
+            ObservableCollection<Funcionario> funcionarios =
+                new ObservableCollection<Funcionario>();
+
+            JsonSerializerSettings settings = new JsonSerializerSettings();
+            settings.DateFormatString = "dd/MM/yyyy";
+
+            string FilePath = Path
+                .Combine(Package.Current.InstalledLocation.Path, @"Data\Funcionario.json");
+            using (StreamReader file = File.OpenText(FilePath))
+            {
+                var json = file.ReadToEnd();
+                var registries = JsonConvert
+                    .DeserializeObject<ObservableCollection<Funcionario>>(json, settings);
+                funcionarios = new ObservableCollection<Funcionario>(registries);
+            }
+
+            return funcionarios;
         }
     }
 }

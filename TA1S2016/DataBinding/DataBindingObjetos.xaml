@@ -5,14 +5,13 @@
     xmlns:local="using:DataBinding"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:modelos="using:DataBinding"
+    xmlns:modelos="using:DataBinding.Model"
     mc:Ignorable="d">
 
     <Page.DataContext>
-        <modelos:Contato Nome="Fulano" Sobrenome="de Tal"/>
+        <modelos:Contato Nome="Ciclano" Sobrenome="de Tal"/>
     </Page.DataContext>
     
-
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <Grid.RowDefinitions>

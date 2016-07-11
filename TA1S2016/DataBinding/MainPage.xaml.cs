@@ -36,5 +36,10 @@ namespace DataBinding
         {
             this.Frame.Navigate(typeof(DataBindingObjetos));
         }
+
+        private void Button_Tapped_2(object sender, TappedRoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(DataBindingLista));
+        }
     }
 }

@@ -147,7 +147,7 @@ namespace LINQ
 
             string pasta = Path.GetDirectoryName(
                 Path.GetDirectoryName(Directory.GetCurrentDirectory()));
-            var arquivo = Path.Combine(pasta, "Data", "Funcionario.json");
+            var arquivo = Path.Combine(pasta, "Data", "Gerente.json");
             using (StreamReader sr = new StreamReader(arquivo))
             {
                 string json = sr.ReadToEnd();

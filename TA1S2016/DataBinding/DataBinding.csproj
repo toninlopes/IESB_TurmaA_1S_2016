@@ -92,13 +92,18 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Data\Funcionario.json" />
+    <Content Include="Data\Gerente.json" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Contato.cs" />
+    <Compile Include="DataBindingLista.xaml.cs">
+      <DependentUpon>DataBindingLista.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contato.cs" />
     <Compile Include="DataBindingObjetos.xaml.cs">
       <DependentUpon>DataBindingObjetos.xaml</DependentUpon>
     </Compile>
@@ -108,6 +113,9 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Departamento.cs" />
+    <Compile Include="Model\Funcionario.cs" />
+    <Compile Include="Model\Gerente.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="DataBindingLista.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DataBindingObjetos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

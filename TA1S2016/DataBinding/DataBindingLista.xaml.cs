@@ -1,6 +1,7 @@
 ﻿using DataBinding.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -21,17 +22,19 @@ namespace DataBinding
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DataBindingObjetos : Page
+    public sealed partial class DataBindingLista : Page
     {
-        public DataBindingObjetos()
+        public ObservableCollection<Funcionario> Funcionarios { get; set; }
+        public DataBindingLista()
         {
             this.InitializeComponent();
+        }
 
-            //var contato = new Contato();
-            //contato.Nome = "Fulano";
-            //contato.Sobrenome = "de Tal";
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
 
-            //this.DataContext = contato;
+            Funcionarios = await App.LoadData();
         }
     }
 }
