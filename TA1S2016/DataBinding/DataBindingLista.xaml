@@ -7,14 +7,146 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Style TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment"
+                                Value="Stretch"/>
+        </Style>
+    </Page.Resources>
+    
+    <Pivot Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <ListView Margin="12">
-            <ListView.Header>
-                <TextBlock Text="Funcionários"
-                           Style="{StaticResource SubtitleTextBlockStyle}"/>
-            </ListView.Header>
-        </ListView>
+        <PivotItem Name="PITodos" Header="Funcionarios">
 
-    </Grid>
+            <ListView Margin="12" ItemsSource="{Binding}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderBrush="Silver"
+                              BorderThickness="0,0,0,2"
+                              Margin="0,0,0,12">
+                        
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Nome" Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Nome}" Grid.Row="0"
+                                       Grid.Column="1"/>
+
+                            <TextBlock Text="Sobrenome" Grid.Row="1"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Sobrenome}" Grid.Row="1"
+                                       Grid.Column="1"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            
+            </ListView>
+        </PivotItem>
+
+        <PivotItem Name="PISalario" Header="Salário">
+
+            <ListView Margin="12"
+                      ItemsSource="{Binding}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderBrush="Silver"
+                              BorderThickness="0,0,0,2"
+                              Margin="0,0,0,12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Nome" Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Nome}" Grid.Row="0"
+                                       Grid.Column="1"/>
+
+                            <TextBlock Text="Sobrenome" Grid.Row="1"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Sobrenome}" Grid.Row="1"
+                                       Grid.Column="1"/>
+
+                            <TextBlock Text="Salário" Grid.Row="2"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Salario}"
+                                       Grid.Row="2"
+                                       Grid.Column="1"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </PivotItem>
+
+        <PivotItem Name="PIDepto" Header="Detpo">
+
+            <ListView Margin="12"
+                      ItemsSource="{Binding}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid BorderBrush="Silver"
+                              BorderThickness="0,0,0,2"
+                              Margin="0,0,0,12">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="Nome" Grid.Row="0"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Nome}" Grid.Row="0"
+                                       Grid.Column="1"/>
+
+                            <TextBlock Text="Sobrenome" Grid.Row="1"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Sobrenome}" Grid.Row="1"
+                                       Grid.Column="1"/>
+
+                            <TextBlock Text="Depto" Grid.Row="2"
+                                       Grid.Column="0"
+                                       Margin="0,0,8,0"/>
+                            <TextBlock Text="{Binding Departamento.Nome}"
+                                       Grid.Row="2"
+                                       Grid.Column="1"/>
+
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </PivotItem>
+
+    </Pivot>
 </Page>

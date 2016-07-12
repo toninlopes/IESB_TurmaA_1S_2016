@@ -24,17 +24,28 @@ namespace DataBinding
     /// </summary>
     public sealed partial class DataBindingLista : Page
     {
-        public ObservableCollection<Funcionario> Funcionarios { get; set; }
+        public ObservableCollection<Funcionario>
+            Funcionarios { get; set; }
+
         public DataBindingLista()
         {
             this.InitializeComponent();
-        }
 
-        protected async override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
+            //this.DataContext = App.LoadData();
 
-            Funcionarios = await App.LoadData();
+            Funcionarios = App.LoadData();
+            //lvFuncionarios.ItemsSource = this.DataContext;
+
+            //Todos
+            PITodos.DataContext = Funcionarios;
+
+            //Salário maior que 2000
+            PISalario.DataContext = Funcionarios
+                .Where( f => f.Salario > 2000);
+
+            //Deptos igual a Tecnologia
+            PIDepto.DataContext = Funcionarios
+                .Where(f => f.Departamento.Nome.Equals("Tecnologia"));
         }
     }
 }
