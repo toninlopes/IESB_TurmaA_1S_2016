@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="NavegacaoSimples.Pagina02"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NavegacaoSimples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <TextBlock Text="Página 02" FontSize="32"
+                 HorizontalAlignment="Center"
+                 VerticalAlignment="Top"/>
+        
+        <Button Content="Navegar Pág. 03"
+                Margin="12"
+                HorizontalAlignment="Stretch"
+                Tapped="Button_Tapped"/>
+
+    </Grid>
+</Page>
