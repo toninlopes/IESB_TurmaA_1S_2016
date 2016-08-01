@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NavegacaoHamburger", "Naveg
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Publicacao", "Publicacao\Publicacao.csproj", "{9F3E1D97-E8B0-4103-A9BF-0D88B1FE3B0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contatos", "Contatos\Contatos.csproj", "{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -165,6 +167,26 @@ Global
 		{9F3E1D97-E8B0-4103-A9BF-0D88B1FE3B0E}.Release|x86.ActiveCfg = Release|x86
 		{9F3E1D97-E8B0-4103-A9BF-0D88B1FE3B0E}.Release|x86.Build.0 = Release|x86
 		{9F3E1D97-E8B0-4103-A9BF-0D88B1FE3B0E}.Release|x86.Deploy.0 = Release|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|ARM.Build.0 = Debug|ARM
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|ARM.Deploy.0 = Debug|ARM
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|x64.ActiveCfg = Debug|x64
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|x64.Build.0 = Debug|x64
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|x64.Deploy.0 = Debug|x64
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|x86.ActiveCfg = Debug|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|x86.Build.0 = Debug|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Debug|x86.Deploy.0 = Debug|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|Any CPU.ActiveCfg = Release|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|ARM.ActiveCfg = Release|ARM
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|ARM.Build.0 = Release|ARM
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|ARM.Deploy.0 = Release|ARM
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|x64.ActiveCfg = Release|x64
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|x64.Build.0 = Release|x64
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|x64.Deploy.0 = Release|x64
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|x86.ActiveCfg = Release|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|x86.Build.0 = Release|x86
+		{DCD20E98-BF26-4018-AF94-4A1FFAB4742C}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

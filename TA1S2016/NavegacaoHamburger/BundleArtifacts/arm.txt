@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Antonio Lopes\Source\Repos\IESB_TurmaA_1S_20162\TA1S2016\NavegacaoHamburger\bin\ARM\Debug\NavegacaoHamburger_1.0.0.0_ARM_Debug.appx
+SymbolPackage=C:\Users\Antonio Lopes\Source\Repos\IESB_TurmaA_1S_20162\TA1S2016\NavegacaoHamburger\AppPackages\NavegacaoHamburger_1.0.0.0_Debug_Test\NavegacaoHamburger_1.0.0.0_ARM_Debug.appxsym
