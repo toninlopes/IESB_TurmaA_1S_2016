@@ -9,12 +9,25 @@
 
     <Pivot Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <PivotItem Name="PITodos" Header="Favoritos">
+        <PivotItem Header="Favoritos">
 
         </PivotItem>
 
-        <PivotItem Name="Todos" Header="Todos">
-
+        <PivotItem Header="Todos">
+            <ListView Name="lvTodos">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Nome}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </PivotItem>
     </Pivot>
+
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="AddFriend"
+                          Click="AppBarButton_Click"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 </Page>

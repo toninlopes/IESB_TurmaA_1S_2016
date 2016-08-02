@@ -1,5 +1,8 @@
-﻿using System;
+﻿using SQLite.Net;
+using SQLite.Net.Platform.WinRT;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -25,6 +28,23 @@ namespace Contatos
         public MainPage()
         {
             this.InitializeComponent();
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            using (SQLiteConnection connection =
+                new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
+            {
+                lvTodos.ItemsSource =
+                    new ObservableCollection<Model.Contato>(connection.Table<Model.Contato>());
+            }
+        }
+
+        private void AppBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Contato));
         }
     }
 }

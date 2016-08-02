@@ -73,7 +73,7 @@
                                        TextTrimming="WordEllipsis"/>
                         </Grid>
                     </ListViewItem>
-                    <ListViewItem>
+                    <ListViewItem Tapped="ListViewItem_Tapped">
                         <StackPanel Orientation="Horizontal">
                             <TextBlock Text="&#xE713;"
                                        FontSize="18" FontFamily="Segoe MDL2 Assets" VerticalAlignment="Center"/>
