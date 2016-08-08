@@ -46,5 +46,15 @@ namespace Contatos
         {
             this.Frame.Navigate(typeof(Contato));
         }
+
+        private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Frame.Navigate(typeof(Contato), lvTodos.SelectedItem);
+        }
+
+        private void lvTodos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            appBarEdit.IsEnabled = true;
+        }
     }
 }

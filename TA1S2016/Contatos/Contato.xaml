@@ -44,9 +44,14 @@
     
     <Page.BottomAppBar>
         <CommandBar Name="CommandBar">
-            <AppBarButton Icon="Save" Click="Save_Click"/>
-            <AppBarButton Icon="Delete" Click="Delete_Click"/>
-            <AppBarButton Icon="Cancel" Click="Cancel_Click"/>
+            <AppBarButton Icon="Save"
+                          Click="Save_Click"/>
+            <AppBarButton Icon="Delete"
+                          Label="Apagar"
+                          Click="Delete_Click"/>
+            <AppBarButton Icon="Cancel"
+                          Label="Cancel"
+                          Click="Cancel_Click"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

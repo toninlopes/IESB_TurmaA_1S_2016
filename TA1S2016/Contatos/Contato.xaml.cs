@@ -33,7 +33,8 @@ namespace Contatos
         {
             base.OnNavigatedTo(e);
 
-            if (e.Parameter != null && e.Parameter is Model.Contato)
+            if (e.Parameter != null &&
+                e.Parameter is Model.Contato)
             {
                 this.DataContext = e.Parameter as Model.Contato;
             }
