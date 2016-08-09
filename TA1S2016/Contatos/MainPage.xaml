@@ -14,54 +14,57 @@
             <Setter Property="Padding"
                     Value="0"/>
         </Style>
-    </Page.Resources>
-    
-    <Pivot Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-        <PivotItem Header="Favoritos">
-
-        </PivotItem>
-
-        <PivotItem Header="Todos">
-            <ListView Name="lvTodos"
-                      SelectionChanged="lvTodos_SelectionChanged">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid BorderBrush="Silver"
+        <DataTemplate x:Name="dtContato">
+            <Grid BorderBrush="Silver"
                               BorderThickness="0,0,0,1"
                               Margin="0,0,0,4">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                            
-                            <Border Grid.Row="0" Grid.RowSpan="2"
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Row="0" Grid.RowSpan="2"
                                     Grid.Column="0"
                                     BorderBrush="Silver" BorderThickness="1"
                                     Height="48" Width="48" CornerRadius="50"
                                     HorizontalAlignment="Center">
-                                <Border.Background>
-                                    <ImageBrush ImageSource="/Assets/Unknown_Character.png"
+                    <Border.Background>
+                        <ImageBrush ImageSource="/Assets/Unknown_Character.png"
                                                 Stretch="Uniform"/>
-                                </Border.Background>
-                            </Border>
+                    </Border.Background>
+                </Border>
 
-                            <TextBlock Grid.Row="0"
+                <TextBlock Grid.Row="0"
                                        Grid.Column="1"
                                        Text="{Binding Nome}"/>
 
-                            <TextBlock Grid.Row="1"
+                <TextBlock Grid.Row="1"
                                        Grid.Column="1"
                                        Text="{Binding Email}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    
+    <Pivot Name="myPivot"
+           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+           SelectionChanged="myPivot_SelectionChanged">
+
+        <PivotItem Header="Favoritos">
+            <ListView Name="lvFavoritos"
+                      ItemTemplate="{StaticResource dtContato}"
+                      SelectionChanged="lvTodos_SelectionChanged"/>
+        </PivotItem>
+
+        <PivotItem Header="Todos">
+            <ListView Name="lvTodos"
+                      ItemTemplate="{StaticResource dtContato}"
+                      SelectionChanged="lvTodos_SelectionChanged"/>
         </PivotItem>
     </Pivot>
 

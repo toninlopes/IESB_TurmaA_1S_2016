@@ -37,8 +37,10 @@ namespace Contatos
             using (SQLiteConnection connection =
                 new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
             {
-                lvTodos.ItemsSource =
+                var contatos =
                     new ObservableCollection<Model.Contato>(connection.Table<Model.Contato>());
+                lvFavoritos.ItemsSource = contatos.Where(c => c.IsFavorito == true);
+                lvTodos.ItemsSource = contatos;
             }
         }
 
@@ -49,12 +51,26 @@ namespace Contatos
 
         private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Frame.Navigate(typeof(Contato), lvTodos.SelectedItem);
+            if (myPivot.SelectedIndex == 0)
+            {
+                this.Frame.Navigate(typeof(Contato), lvFavoritos.SelectedItem);
+            }
+            else
+            {
+                this.Frame.Navigate(typeof(Contato), lvTodos.SelectedItem);
+            }
         }
 
         private void lvTodos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             appBarEdit.IsEnabled = true;
+        }
+
+        private void myPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            lvFavoritos.SelectedItem = null;
+            lvTodos.SelectedItem = null;
+            appBarEdit.IsEnabled = false;
         }
     }
 }
