@@ -5,8 +5,13 @@
     xmlns:local="using:Contatos"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:Contatos.ViewModel"
     mc:Ignorable="d">
 
+    <Page.DataContext>
+        <viewmodel:ContatosViewModel/>
+    </Page.DataContext>
+    
     <Page.Resources>
         <Style TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment"
@@ -57,14 +62,16 @@
 
         <PivotItem Header="Favoritos">
             <ListView Name="lvFavoritos"
+                      ItemsSource="{Binding ListaContatosFavoritos}"
                       ItemTemplate="{StaticResource dtContato}"
-                      SelectionChanged="lvTodos_SelectionChanged"/>
+                      SelectedItem="{Binding SelectedContato}"/>
         </PivotItem>
 
         <PivotItem Header="Todos">
             <ListView Name="lvTodos"
+                      ItemsSource="{Binding ListaContatos}"
                       ItemTemplate="{StaticResource dtContato}"
-                      SelectionChanged="lvTodos_SelectionChanged"/>
+                      SelectedItem="{Binding SelectedContato}"/>
         </PivotItem>
     </Pivot>
 

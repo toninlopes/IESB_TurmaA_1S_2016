@@ -34,14 +34,14 @@ namespace Contatos
         {
             base.OnNavigatedTo(e);
 
-            using (SQLiteConnection connection =
-                new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
-            {
-                var contatos =
-                    new ObservableCollection<Model.Contato>(connection.Table<Model.Contato>());
-                lvFavoritos.ItemsSource = contatos.Where(c => c.IsFavorito == true);
-                lvTodos.ItemsSource = contatos;
-            }
+            //using (SQLiteConnection connection =
+            //    new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
+            //{
+            //    var contatos =
+            //        new ObservableCollection<Model.Contato>(connection.Table<Model.Contato>());
+            //    lvFavoritos.ItemsSource = contatos.Where(c => c.IsFavorito == true);
+            //    lvTodos.ItemsSource = contatos;
+            //}
         }
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
@@ -61,10 +61,10 @@ namespace Contatos
             }
         }
 
-        private void lvTodos_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            appBarEdit.IsEnabled = true;
-        }
+        //private void lvTodos_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    appBarEdit.IsEnabled = true;
+        //}
 
         private void myPivot_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -51,21 +51,21 @@ namespace Contatos
 
         private void Delete_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLiteConnection connection =
-                new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
-            {
-                connection.Delete(this.DataContext as Model.Contato);
-            }
+            //using (SQLiteConnection connection =
+            //    new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
+            //{
+            //    connection.Delete(this.DataContext as Model.Contato);
+            //}
             this.Frame.GoBack();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            using (SQLiteConnection connection =
-                new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
-            {
-                connection.InsertOrReplace(this.DataContext as Model.Contato);
-            }
+            //using (SQLiteConnection connection =
+            //    new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
+            //{
+            //    connection.InsertOrReplace(this.DataContext as Model.Contato);
+            //}
             this.Frame.GoBack();
         }
     }
