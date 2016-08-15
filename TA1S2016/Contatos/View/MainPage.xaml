@@ -78,7 +78,7 @@
     <Page.BottomAppBar>
         <CommandBar>
             <AppBarButton Icon="AddFriend"
-                          Click="AppBarButton_Click"/>
+                          Command="{Binding IncluirCommand}"/>
             <AppBarButton Name="appBarEdit" Icon="Edit" IsEnabled="False"
                           Click="AppBarButton_Click_1"/>
         </CommandBar>

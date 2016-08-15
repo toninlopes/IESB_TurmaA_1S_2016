@@ -5,13 +5,15 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Contatos.ViewModel
 {
     public class ContatosViewModel
     {
         public static string SQLitePath =
-            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "database.sqlite");
+            Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path,
+                "database.sqlite");
 
         public ObservableCollection<Model.Contato> ListaContatos { get; set; }
         public ObservableCollection<Model.Contato> ListaContatosFavoritos { get; set; }
@@ -25,14 +27,24 @@ namespace Contatos.ViewModel
             {
                 connection.CreateTable<Model.Contato>();
 
-                ListaContatos =
+                this.ListaContatos =
                     new ObservableCollection<Model.Contato>
                     (connection.Table<Model.Contato>());
 
-                ListaContatosFavoritos =
+                this.ListaContatosFavoritos =
                     new ObservableCollection<Model.Contato>
                     (ListaContatos.Where(c => c.IsFavorito));
             }
+
+            this.IncluirCommand = new Commands.ActionCommand(Incluir);
+        }
+
+        public ICommand IncluirCommand { get; private set; }
+
+        private void Incluir()
+        {
+            this.SelectedContato = new Model.Contato();
+            App.RootFrame.Navigate(typeof(Contato), this);
         }
     }
 }
