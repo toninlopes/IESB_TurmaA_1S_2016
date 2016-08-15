@@ -37,6 +37,7 @@ namespace Contatos.ViewModel
             }
 
             this.IncluirCommand = new Commands.ActionCommand(Incluir);
+            this.SalvarCommand = new Commands.ActionCommand(Salvar);
         }
 
         public ICommand IncluirCommand { get; private set; }
@@ -45,6 +46,18 @@ namespace Contatos.ViewModel
         {
             this.SelectedContato = new Model.Contato();
             App.RootFrame.Navigate(typeof(Contato), this);
+        }
+
+        public ICommand SalvarCommand { get; private set; }
+        private void Salvar()
+        {
+            using (SQLite.Net.SQLiteConnection connection =
+                new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), SQLitePath))
+            {
+                connection.InsertOrReplace(this.SelectedContato);
+            }
+
+            App.RootFrame.GoBack();
         }
     }
 }

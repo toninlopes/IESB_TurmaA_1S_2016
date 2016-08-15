@@ -44,11 +44,6 @@ namespace Contatos
             //}
         }
 
-        private void AppBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(Contato));
-        }
-
         private void AppBarButton_Click_1(object sender, RoutedEventArgs e)
         {
             if (myPivot.SelectedIndex == 0)

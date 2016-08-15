@@ -20,15 +20,7 @@ namespace Contatos
         {
             base.OnNavigatedTo(e);
 
-            //if (e.Parameter != null &&
-            //    e.Parameter is Model.Contato)
-            //{
-            //    this.DataContext = e.Parameter as Model.Contato;
-            //}
-            //else
-            //{
-            //    this.DataContext = new Model.Contato();
-            //}
+            this.DataContext = e.Parameter;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -42,16 +34,6 @@ namespace Contatos
             //    new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
             //{
             //    connection.Delete(this.DataContext as Model.Contato);
-            //}
-            //this.Frame.GoBack();
-        }
-
-        private void Save_Click(object sender, RoutedEventArgs e)
-        {
-            //using (SQLiteConnection connection =
-            //    new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
-            //{
-            //    connection.InsertOrReplace(this.DataContext as Model.Contato);
             //}
             //this.Frame.GoBack();
         }

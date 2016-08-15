@@ -21,31 +21,31 @@
         
         <TextBox Grid.Row="1" Margin="12"
                  Header="Nome"
-                 Text="{Binding Nome, Mode=TwoWay}"/>
+                 Text="{Binding SelectedContato.Nome, Mode=TwoWay}"/>
         
         <TextBox Grid.Row="2" Margin="12"
                  Header="Email"
                  InputScope="EmailSmtpAddress"
-                 Text="{Binding Email, Mode=TwoWay}"/>
+                 Text="{Binding SelectedContato.Email, Mode=TwoWay}"/>
         
         <TextBox Grid.Row="3" Margin="12"
                  Header="Telefone"
                  InputScope="TelephoneNumber"
-                 Text="{Binding Telefone, Mode=TwoWay}"/>
+                 Text="{Binding SelectedContato.Telefone, Mode=TwoWay}"/>
         
         <ToggleSwitch Grid.Row="4" Margin="12"
                       Header="Favorito?"
                       HorizontalAlignment="Stretch"
                       OnContent="Sim"
                       OffContent="Não"
-                      IsOn="{Binding IsFavorito, Mode=TwoWay}"/>
+                      IsOn="{Binding SelectedContato.IsFavorito, Mode=TwoWay}"/>
         
     </Grid>
     
     <Page.BottomAppBar>
         <CommandBar Name="CommandBar">
             <AppBarButton Icon="Save"
-                          Click="Save_Click"/>
+                          Command="{Binding SalvarCommand}"/>
             <AppBarButton Icon="Delete"
                           Label="Apagar"
                           Click="Delete_Click"/>
