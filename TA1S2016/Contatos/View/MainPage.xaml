@@ -57,21 +57,20 @@
     </Page.Resources>
     
     <Pivot Name="myPivot"
-           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-           SelectionChanged="myPivot_SelectionChanged">
+           Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <PivotItem Header="Favoritos">
             <ListView Name="lvFavoritos"
                       ItemsSource="{Binding ListaContatosFavoritos}"
                       ItemTemplate="{StaticResource dtContato}"
-                      SelectedItem="{Binding SelectedContato}"/>
+                      SelectedItem="{Binding SelectedContato, Mode=TwoWay}"/>
         </PivotItem>
 
         <PivotItem Header="Todos">
             <ListView Name="lvTodos"
                       ItemsSource="{Binding ListaContatos}"
                       ItemTemplate="{StaticResource dtContato}"
-                      SelectedItem="{Binding SelectedContato}"/>
+                      SelectedItem="{Binding SelectedContato, Mode=TwoWay}"/>
         </PivotItem>
     </Pivot>
 
@@ -79,8 +78,8 @@
         <CommandBar>
             <AppBarButton Icon="AddFriend"
                           Command="{Binding IncluirCommand}"/>
-            <AppBarButton Name="appBarEdit" Icon="Edit" IsEnabled="False"
-                          Click="AppBarButton_Click_1"/>
+            <AppBarButton Name="appBarEdit" Icon="Edit"
+                          Command="{Binding EditarCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

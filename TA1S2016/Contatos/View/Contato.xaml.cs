@@ -22,20 +22,5 @@ namespace Contatos
 
             this.DataContext = e.Parameter;
         }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            //this.Frame.GoBack();
-        }
-
-        private void Delete_Click(object sender, RoutedEventArgs e)
-        {
-            //using (SQLiteConnection connection =
-            //    new SQLiteConnection(new SQLitePlatformWinRT(), App.SQLitePath))
-            //{
-            //    connection.Delete(this.DataContext as Model.Contato);
-            //}
-            //this.Frame.GoBack();
-        }
     }
 }

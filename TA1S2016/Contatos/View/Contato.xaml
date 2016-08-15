@@ -48,10 +48,10 @@
                           Command="{Binding SalvarCommand}"/>
             <AppBarButton Icon="Delete"
                           Label="Apagar"
-                          Click="Delete_Click"/>
+                          Command="{Binding ApagarCommand}"/>
             <AppBarButton Icon="Cancel"
                           Label="Cancel"
-                          Click="Cancel_Click"/>
+                          Command="{Binding CancelarCommand}"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>

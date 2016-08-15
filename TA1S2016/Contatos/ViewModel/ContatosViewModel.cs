@@ -38,6 +38,9 @@ namespace Contatos.ViewModel
 
             this.IncluirCommand = new Commands.ActionCommand(Incluir);
             this.SalvarCommand = new Commands.ActionCommand(Salvar);
+            this.EditarCommand = new Commands.ActionCommand(Editar);
+            this.ApagarCommand = new Commands.ActionCommand(Apagar);
+            this.CancelarCommand = new Commands.ActionCommand(Cancelar);
         }
 
         public ICommand IncluirCommand { get; private set; }
@@ -45,6 +48,12 @@ namespace Contatos.ViewModel
         private void Incluir()
         {
             this.SelectedContato = new Model.Contato();
+            App.RootFrame.Navigate(typeof(Contato), this);
+        }
+
+        public ICommand EditarCommand { get; private set; }
+        private void Editar()
+        {
             App.RootFrame.Navigate(typeof(Contato), this);
         }
 
@@ -57,6 +66,25 @@ namespace Contatos.ViewModel
                 connection.InsertOrReplace(this.SelectedContato);
             }
 
+            App.RootFrame.GoBack();
+        }
+
+        public ICommand ApagarCommand { get; private set; }
+        private void Apagar()
+        {
+            using (SQLite.Net.SQLiteConnection connection =
+                new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), SQLitePath))
+            {
+                connection.Delete(this.SelectedContato);
+            }
+
+            App.RootFrame.GoBack();
+        }
+
+        public ICommand CancelarCommand { get; private set; }
+        private void Cancelar()
+        {
+            this.SelectedContato = null;
             App.RootFrame.GoBack();
         }
     }
