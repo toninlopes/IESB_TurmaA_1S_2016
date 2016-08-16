@@ -17,7 +17,10 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         
-        <TextBlock Grid.Row="0" Text="Contato" FontSize="36" Margin="12" Grid.ColumnSpan="2"/>
+        <TextBlock Grid.Row="0" Text="Contato"
+                   FontSize="36" Margin="12"
+                   Foreground="Black"
+                   Grid.ColumnSpan="2"/>
         
         <TextBox Grid.Row="1" Margin="12"
                  Header="Nome"

@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Contatos.ViewModel
 {
-    public class ContatosViewModel
+    public class ContatosViewModel : Notify.BaseModel
     {
         public static string SQLitePath =
             Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path,
@@ -18,7 +18,12 @@ namespace Contatos.ViewModel
         public ObservableCollection<Model.Contato> ListaContatos { get; set; }
         public ObservableCollection<Model.Contato> ListaContatosFavoritos { get; set; }
 
-        public Model.Contato SelectedContato { get; set; }
+        private Model.Contato selectedContato;
+        public Model.Contato SelectedContato
+        {
+            get { return this.selectedContato; }
+            set { SetField(ref this.selectedContato, value); }
+        }
 
         public ContatosViewModel()
         {

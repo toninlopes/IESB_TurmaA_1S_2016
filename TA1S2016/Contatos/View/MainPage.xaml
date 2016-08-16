@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:viewmodel="using:Contatos.ViewModel"
+    xmlns:bruno="using:Contatos.Converters"
     mc:Ignorable="d">
 
     <Page.DataContext>
@@ -13,6 +14,10 @@
     </Page.DataContext>
     
     <Page.Resources>
+
+        <bruno:NullableToBoolConverter
+            x:Key="NullableToBoolConverter"/>
+
         <Style TargetType="ListViewItem">
             <Setter Property="HorizontalContentAlignment"
                     Value="Stretch"/>
@@ -78,8 +83,9 @@
         <CommandBar>
             <AppBarButton Icon="AddFriend"
                           Command="{Binding IncluirCommand}"/>
-            <AppBarButton Name="appBarEdit" Icon="Edit"
-                          Command="{Binding EditarCommand}"/>
+            <AppBarButton Icon="Edit"
+                          Command="{Binding EditarCommand}"
+                          IsEnabled="{Binding SelectedContato, Converter={StaticResource NullableToBoolConverter}}"/>
         </CommandBar>
     </Page.BottomAppBar>
 </Page>
