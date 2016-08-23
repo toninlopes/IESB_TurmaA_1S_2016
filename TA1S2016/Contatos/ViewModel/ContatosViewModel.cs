@@ -15,8 +15,19 @@ namespace Contatos.ViewModel
             Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path,
                 "database.sqlite");
 
-        public ObservableCollection<Model.Contato> ListaContatos { get; set; }
-        public ObservableCollection<Model.Contato> ListaContatosFavoritos { get; set; }
+        private ObservableCollection<Model.Contato> listaContatos;
+        public ObservableCollection<Model.Contato> ListaContatos
+        {
+            get { return this.listaContatos; }
+            set { SetField(ref this.listaContatos, value); }
+        }
+
+        private ObservableCollection<Model.Contato> listaContatosFavoritos;
+        public ObservableCollection<Model.Contato> ListaContatosFavoritos
+        {
+            get { return this.listaContatosFavoritos; }
+            set { SetField(ref this.listaContatosFavoritos, value); }
+        }
 
         private Model.Contato selectedContato;
         public Model.Contato SelectedContato
@@ -44,7 +55,7 @@ namespace Contatos.ViewModel
             this.IncluirCommand = new Commands.ActionCommand(Incluir);
             this.SalvarCommand = new Commands.ActionCommand(SalvarAsync);
             this.EditarCommand = new Commands.ActionCommand(Editar);
-            this.ApagarCommand = new Commands.ActionCommand(Apagar);
+            this.ApagarCommand = new Commands.ActionCommand(ApagarAsync);
             this.CancelarCommand = new Commands.ActionCommand(Cancelar);
         }
 
@@ -60,7 +71,10 @@ namespace Contatos.ViewModel
             var contatos = Newtonsoft.Json.JsonConvert
                 .DeserializeObject<List<Model.Contato>>(json);
 
-            this.ListaContatos = new ObservableCollection<Model.Contato>(contatos);
+            this.ListaContatos =
+                new ObservableCollection<Model.Contato>(contatos);
+            this.ListaContatosFavoritos =
+                new ObservableCollection<Model.Contato>(contatos.Where(c => c.IsFavorito));
         }
 
         public ICommand IncluirCommand { get; private set; }
@@ -99,9 +113,13 @@ namespace Contatos.ViewModel
                 Windows.Storage.Streams.UnicodeEncoding.Utf8,
                 "application/json");
 
-            Uri url = new Uri("http://studentsintouch.azurewebsites.net/tables/Contact");
-            var method = new Windows.Web.Http.HttpMethod("POST");
-            var request = new Windows.Web.Http.HttpRequestMessage(method, url);
+            Uri url =
+                new Uri($"http://studentsintouch.azurewebsites.net/tables/Contact/{this.SelectedContato.ID}");
+            string method = string.IsNullOrWhiteSpace(this.SelectedContato.ID) ?
+                "POST" : "PATCH";
+
+            var requestMethod = new Windows.Web.Http.HttpMethod(method);
+            var request = new Windows.Web.Http.HttpRequestMessage(requestMethod, url);
             request.Content = contentJson;
 
             try
@@ -117,12 +135,27 @@ namespace Contatos.ViewModel
         }
 
         public ICommand ApagarCommand { get; private set; }
-        private void Apagar()
+        private async void ApagarAsync()
         {
-            using (SQLite.Net.SQLiteConnection connection =
-                new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), SQLitePath))
+            //using (SQLite.Net.SQLiteConnection connection =
+            //    new SQLite.Net.SQLiteConnection(new SQLite.Net.Platform.WinRT.SQLitePlatformWinRT(), SQLitePath))
+            //{
+            //    connection.Delete(this.SelectedContato);
+            //}
+
+            Uri url =
+                new Uri($"http://studentsintouch.azurewebsites.net/tables/Contact/{this.SelectedContato.ID}");
+
+            var requestMethod = new Windows.Web.Http.HttpMethod("DELETE");
+            var request = new Windows.Web.Http.HttpRequestMessage(requestMethod, url);
+
+            try
             {
-                connection.Delete(this.SelectedContato);
+                string result = await Model.Conector.SendRequestAsync(request);
+            }
+            catch (Exception e)
+            {
+
             }
 
             App.RootFrame.GoBack();
