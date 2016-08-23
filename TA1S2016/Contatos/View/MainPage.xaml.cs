@@ -29,5 +29,13 @@ namespace Contatos
         {
             this.InitializeComponent();
         }
+
+        protected async override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            await (this.DataContext as ViewModel.ContatosViewModel)
+                .GetAllContatosAsync();
+        }
     }
 }
