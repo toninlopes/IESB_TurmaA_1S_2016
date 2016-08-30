@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -15,22 +17,34 @@ namespace Contatos.ViewModel
             Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path,
                 "database.sqlite");
 
-        private ObservableCollection<Model.Contato> listaContatos;
-        public ObservableCollection<Model.Contato> ListaContatos
+        private static MobileServiceClient mobileService =            new MobileServiceClient("http://studentsintouch.azurewebsites.net",
+                null,
+                new Model.AzureHandler());
+
+        private IMobileServiceTable<Model.Contact> contatoTable { get; set; }
+
+        //private ObservableCollection<Model.Contact> listaContatos;
+        //public ObservableCollection<Model.Contact> ListaContatos
+        //{
+        //    get { return this.listaContatos; }
+        //    set { SetField(ref this.listaContatos, value); }
+        //}
+        private MobileServiceCollection<Model.Contact, Model.Contact> listaContatos;
+        public MobileServiceCollection<Model.Contact, Model.Contact> ListaContatos
         {
             get { return this.listaContatos; }
             set { SetField(ref this.listaContatos, value); }
         }
 
-        private ObservableCollection<Model.Contato> listaContatosFavoritos;
-        public ObservableCollection<Model.Contato> ListaContatosFavoritos
+        private ObservableCollection<Model.Contact> listaContatosFavoritos;
+        public ObservableCollection<Model.Contact> ListaContatosFavoritos
         {
             get { return this.listaContatosFavoritos; }
             set { SetField(ref this.listaContatosFavoritos, value); }
         }
 
-        private Model.Contato selectedContato;
-        public Model.Contato SelectedContato
+        private Model.Contact selectedContato;
+        public Model.Contact SelectedContato
         {
             get { return this.selectedContato; }
             set { SetField(ref this.selectedContato, value); }
@@ -52,6 +66,8 @@ namespace Contatos.ViewModel
             //        (ListaContatos.Where(c => c.IsFavorito));
             //}
 
+            this.contatoTable = mobileService.GetTable<Model.Contact>();
+
             this.IncluirCommand = new Commands.ActionCommand(Incluir);
             this.SalvarCommand = new Commands.ActionCommand(SalvarAsync);
             this.EditarCommand = new Commands.ActionCommand(Editar);
@@ -61,27 +77,36 @@ namespace Contatos.ViewModel
 
         public async Task GetAllContatosAsync()
         {
-            Uri url = new Uri("http://studentsintouch.azurewebsites.net/tables/Contact");
-            var method = new Windows.Web.Http.HttpMethod("GET");
-            var request = new Windows.Web.Http.HttpRequestMessage(method, url);
+            //Uri url = new Uri("http://studentsintouch.azurewebsites.net/tables/Contact");
+            //var method = new Windows.Web.Http.HttpMethod("GET");
+            //var request = new Windows.Web.Http.HttpRequestMessage(method, url);
 
-            string json = await Model.Conector
-                .SendRequestAsync(request);
+            //string json = await Model.Conector
+            //    .SendRequestAsync(request);
 
-            var contatos = Newtonsoft.Json.JsonConvert
-                .DeserializeObject<List<Model.Contato>>(json);
+            //var contatos = Newtonsoft.Json.JsonConvert
+            //    .DeserializeObject<List<Model.Contact>>(json);
 
-            this.ListaContatos =
-                new ObservableCollection<Model.Contato>(contatos);
-            this.ListaContatosFavoritos =
-                new ObservableCollection<Model.Contato>(contatos.Where(c => c.IsFavorito));
+            //this.ListaContatos =
+            //    new ObservableCollection<Model.Contact>(contatos);
+            //this.ListaContatosFavoritos =
+            //    new ObservableCollection<Model.Contact>(contatos.Where(c => c.IsFavorito));
+
+            try
+            {
+                this.ListaContatos = await contatoTable.ToCollectionAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.Message);
+            }
         }
 
         public ICommand IncluirCommand { get; private set; }
 
         private void Incluir()
         {
-            this.SelectedContato = new Model.Contato();
+            this.SelectedContato = new Model.Contact();
             App.RootFrame.Navigate(typeof(Contato), this);
         }
 
@@ -100,35 +125,47 @@ namespace Contatos.ViewModel
             //    connection.InsertOrReplace(this.SelectedContato);
             //}
 
-            Newtonsoft.Json.JsonSerializerSettings settings =
-                new Newtonsoft.Json.JsonSerializerSettings();
-            settings.Formatting = Newtonsoft.Json.Formatting.Indented;
-            settings.NullValueHandling =
-                Newtonsoft.Json.NullValueHandling.Ignore;
+            //Newtonsoft.Json.JsonSerializerSettings settings =
+            //    new Newtonsoft.Json.JsonSerializerSettings();
+            //settings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            //settings.NullValueHandling =
+            //    Newtonsoft.Json.NullValueHandling.Ignore;
 
-            var json = Newtonsoft.Json.JsonConvert
-                .SerializeObject(this.SelectedContato, settings);
-            var contentJson = new Windows.Web.Http
-                .HttpStringContent(json,
-                Windows.Storage.Streams.UnicodeEncoding.Utf8,
-                "application/json");
+            //var json = Newtonsoft.Json.JsonConvert
+            //    .SerializeObject(this.SelectedContato, settings);
+            //var contentJson = new Windows.Web.Http
+            //    .HttpStringContent(json,
+            //    Windows.Storage.Streams.UnicodeEncoding.Utf8,
+            //    "application/json");
 
-            Uri url =
-                new Uri($"http://studentsintouch.azurewebsites.net/tables/Contact/{this.SelectedContato.ID}");
-            string method = string.IsNullOrWhiteSpace(this.SelectedContato.ID) ?
-                "POST" : "PATCH";
+            //Uri url =
+            //    new Uri($"http://studentsintouch.azurewebsites.net/tables/Contact/{this.SelectedContato.ID}");
+            //string method = string.IsNullOrWhiteSpace(this.SelectedContato.ID) ?
+            //    "POST" : "PATCH";
 
-            var requestMethod = new Windows.Web.Http.HttpMethod(method);
-            var request = new Windows.Web.Http.HttpRequestMessage(requestMethod, url);
-            request.Content = contentJson;
+            //var requestMethod = new Windows.Web.Http.HttpMethod(method);
+            //var request = new Windows.Web.Http.HttpRequestMessage(requestMethod, url);
+            //request.Content = contentJson;
+
+            //try
+            //{
+            //    string result = await Model.Conector.SendRequestAsync(request);
+            //}
+            //catch (Exception e)
+            //{
+
+            //}
 
             try
             {
-                string result = await Model.Conector.SendRequestAsync(request);
+                if (string.IsNullOrWhiteSpace(this.SelectedContato.ID))
+                    await contatoTable.InsertAsync(this.SelectedContato);
+                else
+                    await contatoTable.UpdateAsync(this.SelectedContato);
             }
             catch (Exception e)
             {
-
+                Debug.WriteLine(e.Message);
             }
 
             App.RootFrame.GoBack();
@@ -143,19 +180,28 @@ namespace Contatos.ViewModel
             //    connection.Delete(this.SelectedContato);
             //}
 
-            Uri url =
-                new Uri($"http://studentsintouch.azurewebsites.net/tables/Contact/{this.SelectedContato.ID}");
+            //Uri url =
+            //    new Uri($"http://studentsintouch.azurewebsites.net/tables/Contact/{this.SelectedContato.ID}");
 
-            var requestMethod = new Windows.Web.Http.HttpMethod("DELETE");
-            var request = new Windows.Web.Http.HttpRequestMessage(requestMethod, url);
+            //var requestMethod = new Windows.Web.Http.HttpMethod("DELETE");
+            //var request = new Windows.Web.Http.HttpRequestMessage(requestMethod, url);
+
+            //try
+            //{
+            //    string result = await Model.Conector.SendRequestAsync(request);
+            //}
+            //catch (Exception e)
+            //{
+
+            //}
 
             try
             {
-                string result = await Model.Conector.SendRequestAsync(request);
+                await this.contatoTable.DeleteAsync(this.SelectedContato);
             }
             catch (Exception e)
             {
-
+                Debug.WriteLine(e.Message);
             }
 
             App.RootFrame.GoBack();

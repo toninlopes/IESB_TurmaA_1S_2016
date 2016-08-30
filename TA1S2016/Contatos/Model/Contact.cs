@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Contatos.Model
 {
-    [SQLite.Net.Attributes.Table(nameof(Contato))]
-    public class Contato
+    [SQLite.Net.Attributes.Table(nameof(Contact))]
+    public class Contact
     {
         [SQLite.Net.Attributes.Column(nameof(ID)),
         SQLite.Net.Attributes.PrimaryKey,
