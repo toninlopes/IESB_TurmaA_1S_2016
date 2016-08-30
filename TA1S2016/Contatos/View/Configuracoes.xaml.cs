@@ -1,10 +1,13 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.Messaging;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Networking.PushNotifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -49,12 +52,26 @@ namespace Contatos
                 dataStorage.Values.Add(NomeCompleto.Name, NomeCompleto.Text);
         }
 
-        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        private async void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
         {
             if (dataStorage.Values.ContainsKey(PushNotification.Name))
                 dataStorage.Values[PushNotification.Name] = PushNotification.IsOn;
             else
                 dataStorage.Values.Add(PushNotification.Name, PushNotification.IsOn);
+
+            if (PushNotification.IsOn)
+                await RegistrarPushNotification();
+        }
+
+        private async Task RegistrarPushNotification()
+        {
+            var channel = await PushNotificationChannelManager
+                .CreatePushNotificationChannelForApplicationAsync();
+
+            var hub = new NotificationHub("studentsintouch",
+                "Endpoint=sb://studentsintouch.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature; SharedAccessKey=zELP+vEox3tg5cUjYtad6Vz4vLesG0VWrkT4rds8+7E=");
+
+            var result = await hub.RegisterNativeAsync(channel.Uri);
         }
     }
 }

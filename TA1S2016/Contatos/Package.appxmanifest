@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="4df0f90f-6699-412e-962f-5aec615bdc4b" Publisher="CN=Antonio Lopes" Version="1.0.0.0" />
+  <Identity Name="16894EasyMobi.IESB-PsWindows" Publisher="CN=3965F8A7-D626-45FA-84DD-D36B68BB82CC" Version="1.1.0.0" />
   <mp:PhoneIdentity PhoneProductId="4df0f90f-6699-412e-962f-5aec615bdc4b" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
-    <DisplayName>Contatos</DisplayName>
-    <PublisherDisplayName>Antonio Lopes</PublisherDisplayName>
+    <DisplayName>IESB - Pós Windows</DisplayName>
+    <PublisherDisplayName>Easy Mobi</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
   <Dependencies>
@@ -15,7 +15,7 @@
   </Resources>
   <Applications>
     <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="Contatos.App">
-      <uap:VisualElements DisplayName="Contatos" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Contatos" BackgroundColor="#AB300B">
+      <uap:VisualElements DisplayName="IESB - Pós Windows" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="Contatos" BackgroundColor="#AB300B">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" Square71x71Logo="Assets\Square71x71Logo.png" Square310x310Logo="Assets\Square310x310Logo.png">
           <uap:ShowNameOnTiles>
             <uap:ShowOn Tile="square310x310Logo" />
