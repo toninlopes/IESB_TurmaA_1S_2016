@@ -61,6 +61,8 @@ namespace Contatos
 
             if (PushNotification.IsOn)
                 await RegistrarPushNotification();
+            else
+                await UnregistrarPushNotification();
         }
 
         private async Task RegistrarPushNotification()
@@ -69,9 +71,20 @@ namespace Contatos
                 .CreatePushNotificationChannelForApplicationAsync();
 
             var hub = new NotificationHub("studentsintouch",
-                "Endpoint=sb://studentsintouch.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature; SharedAccessKey=zELP+vEox3tg5cUjYtad6Vz4vLesG0VWrkT4rds8+7E=");
+                "Endpoint=sb://studentsintouch.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=zELP+vEox3tg5cUjYtad6Vz4vLesG0VWrkT4rds8+7E=");
 
             var result = await hub.RegisterNativeAsync(channel.Uri);
+        }
+
+        private async Task UnregistrarPushNotification()
+        {
+            var channel = await PushNotificationChannelManager
+                .CreatePushNotificationChannelForApplicationAsync();
+
+            var hub = new NotificationHub("studentsintouch",
+                "Endpoint=sb://studentsintouch.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=zELP+vEox3tg5cUjYtad6Vz4vLesG0VWrkT4rds8+7E=");
+
+            await hub.UnregisterAllAsync(channel.Uri);
         }
     }
 }
