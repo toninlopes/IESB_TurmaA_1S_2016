@@ -60,7 +60,7 @@
             </Grid>
         </DataTemplate>
     </Page.Resources>
-    
+
     <Pivot Name="myPivot"
            Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 

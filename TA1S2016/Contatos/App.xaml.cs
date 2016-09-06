@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using System;
 using System.IO;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -14,6 +15,9 @@ namespace Contatos
     sealed partial class App : Application
     {
         public static Frame RootFrame { get; set; }
+
+        public static MobileServiceClient mobileService =
+            new MobileServiceClient("https://studentsintouch.azurewebsites.net");
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

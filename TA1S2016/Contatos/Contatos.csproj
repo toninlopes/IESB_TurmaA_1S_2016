@@ -102,6 +102,7 @@
     <Compile Include="Model\AzureHandler.cs" />
     <Compile Include="Model\Conector.cs" />
     <Compile Include="Notify\BaseModel.cs" />
+    <Compile Include="ViewModel\ConfiguracoesViewModel.cs" />
     <Compile Include="ViewModel\ContatosViewModel.cs" />
     <Compile Include="View\Configuracoes.xaml.cs">
       <DependentUpon>Configuracoes.xaml</DependentUpon>

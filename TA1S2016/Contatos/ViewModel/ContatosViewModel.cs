@@ -17,9 +17,10 @@ namespace Contatos.ViewModel
             Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path,
                 "database.sqlite");
 
-        private static MobileServiceClient mobileService =            new MobileServiceClient("http://studentsintouch.azurewebsites.net",
-                null,
-                new Model.AzureHandler());
+        //private static MobileServiceClient mobileService =
+        //    new MobileServiceClient("http://studentsintouch.azurewebsites.net",
+        //        null,
+        //        new Model.AzureHandler());
 
         private IMobileServiceTable<Model.Contact> contatoTable { get; set; }
 
@@ -66,7 +67,7 @@ namespace Contatos.ViewModel
             //        (ListaContatos.Where(c => c.IsFavorito));
             //}
 
-            this.contatoTable = mobileService.GetTable<Model.Contact>();
+            this.contatoTable = App.mobileService.GetTable<Model.Contact>();
 
             this.IncluirCommand = new Commands.ActionCommand(Incluir);
             this.SalvarCommand = new Commands.ActionCommand(SalvarAsync);

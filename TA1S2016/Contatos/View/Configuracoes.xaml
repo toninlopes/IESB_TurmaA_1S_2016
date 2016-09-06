@@ -5,10 +5,16 @@
     xmlns:local="using:Contatos"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="using:Contatos.ViewModel"
     mc:Ignorable="d">
 
+    <Page.DataContext>
+        <viewmodel:ConfiguracoesViewModel/>
+    </Page.DataContext>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -28,5 +34,10 @@
                       OffContent="Desabilitado"
                       Name="PushNotification"
                       Toggled="ToggleSwitch_Toggled"/>
+
+        <Button Grid.Row="3" Margin="12"
+                Content="Login com Facebook"
+                HorizontalAlignment="Stretch"
+                Command="{Binding AuthenticateCommand}"/>
     </Grid>
 </Page>
